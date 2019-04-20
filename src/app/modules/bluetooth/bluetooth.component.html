@@ -1,0 +1,7 @@
+<div class="">
+  <div *ngIf="device | async">
+    {{ device.name }}
+  </div>
+  <button *ngIf="!(device | async)" (click)="requestValue()">Scan for Devices</button>
+  <button *ngIf="(device | async)" (click)=disconnect()>Disconnect</button>
+</div>
