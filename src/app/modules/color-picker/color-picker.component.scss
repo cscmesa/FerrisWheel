@@ -1,20 +1,67 @@
 :host {
   display: block;
-  width: 316px;
+  width: 100%;
   padding: 16px;
 }
-.color-wrapper {
+
+.color-wrapper > .color-row {
   display: flex;
-  height: 250px;
+  align-items: center;
+  justify-content: center;
+  margin: auto -0.5rem;
 }
 
+.color-wrapper {
+  display: block;
+}
+
+.no-device {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: center;
+  height: 300px;
+}
+
+.color-row > button {
+  flex: 1 1 0;
+  padding: 2rem;
+  margin: 0.5rem;
+  border: none;
+  box-shadow: 0px 2px 4px #cdcdcd;
+  transition: background 0.2s ease;
+}
+
+.color-row > button:hover {
+  cursor: pointer;
+}
+
+.black { background: black; color: white; }
+.black:hover { background: lighten(black, 15); }
+.white { background: white; }
+.white:hover { background: darken(white, 5); }
+.red { background: red; }
+.red:hover { background: darken(red, 5); }
+.blue { background: blue; }
+.blue:hover { background: darken(blue, 5); }
+.green { background: green; }
+.green:hover { background: lighten(green, 5); }
+.yellow { background: yellow; }
+.yellow:hover { background: darken(yellow, 5); }
+.pink { background: pink; }
+.pink:hover { background: darken(pink, 5); }
+.cyan { background: cyan; }
+.cyan { background: darken(cyan, 5); }
+
+.rainbow { background: linear-gradient(to right, red, yellow, green, cyan, blue, pink); color: white;}
+
 .input-wrapper {
-  margin-top: 16px;
+  margin: 1rem 0;
   display: flex;
   border-radius: 1px;
   border: 1px solid rgb(220, 220, 220);
-  padding: 8px;
-  height: 32px;
+  padding: 0.5rem;
+  height: 2rem;
   justify-content: center;
 }
 
@@ -27,6 +74,9 @@
 
 .text {
   flex: 1;
-  font-family: 'Helvetica';
   line-height: 32px;
+}
+
+.bt_button {
+
 }

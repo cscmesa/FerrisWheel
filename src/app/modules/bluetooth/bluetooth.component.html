@@ -1,7 +1,10 @@
-<div class="">
-  <div *ngIf="device | async">
-    {{ device.name }}
+<div class="bluetooth-wrapper">
+  <div *ngIf="(device | async) as device" style="text-align:center">
+    <p>Name: {{ device.name }}</p>
+    <p>UUID: {{ device.id }}</p>
   </div>
-  <button *ngIf="!(device | async)" (click)="requestValue()">Scan for Devices</button>
-  <button *ngIf="(device | async)" (click)=disconnect()>Disconnect</button>
+  <div class="bluetooth-buttons">
+    <button *ngIf="!(device | async)" (click)="connect()" class="btn">Scan for Devices</button>
+    <button *ngIf="(device | async)" (click)=disconnect() class="btn">Disconnect</button>
+  </div>
 </div>

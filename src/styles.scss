@@ -1,8 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
+
+$color1: rgba(6, 123, 194, 1); // Blue
+$color2: rgba(132, 188, 218, 1); // Lightblue
+$color3: rgba(236, 195, 11, 1); // Mustard
+$color4: rgba(243, 119, 72, 1); // Orange
+$color5: rgba(213, 96, 98, 1); // Red
+
 body {
   font-family: 'Avenir Next', sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  overflow-y: hidden;
 }
 
 h1, h2, h3, h4, h5, h6, p {
   margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: $color1;
+}
+
+.btn {
+  background: $color2;
+  padding: 1rem;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin: 1rem;
+}
+
+.btn:hover {
+  background: darken($color2, 10);
 }

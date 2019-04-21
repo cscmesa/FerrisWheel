@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { BluetoothModule } from '../bluetooth/bluetooth.module';
 import { ColorPickerModule } from '../color-picker/color-picker.module';
+import { LoggerModule } from '../logger/logger.module';
 
 import { DashboardComponent } from './dashboard.component';
 
@@ -11,11 +12,13 @@ import { DashboardComponent } from './dashboard.component';
   imports: [
     CommonModule,
     BluetoothModule,
-    ColorPickerModule
+    ColorPickerModule,
+    LoggerModule
   ],
   exports: [
     BluetoothModule,
     ColorPickerModule,
+    LoggerModule,
     DashboardComponent
   ]
 })

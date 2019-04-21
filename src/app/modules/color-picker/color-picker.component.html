@@ -1,8 +1,32 @@
-<div class="color-wrapper">
-  <app-color-palette [hue]="hue" (color)="color=$event"></app-color-palette>
-  <app-color-slider (color)="hue=$event" style="margin-left: 1rem;"></app-color-slider>
+<div class="color-wrapper" *ngIf="(device | async); else noDevice">
+  <p>Choose a color to send to LED lights:</p>
+  <div class="color-row">
+    <button type="button" name="red" class="red" (click)="sendColor('100')">Red</button>
+    <button type="button" name="green" class="green" (click)="sendColor('010')">Green</button>
+    <button type="button" name="blue" class="blue" (click)="sendColor('001')">Blue</button>
+  </div>
+  <div class="color-row">
+    <button type="button" name="yellow" class="yellow" (click)="sendColor('110')">Yellow</button>
+    <button type="button" name="pink" class="pink" (click)="sendColor('101')">Pink</button>
+    <button type="button" name="cyan" class="cyan" (click)="sendColor('011')">Cyan</button>
+  </div>
+  <div class="color-row">
+    <button type="button" name="black" class="black" (click)="sendColor('000')">Off</button>
+    <button type="button" name="white" class="white" (click)="sendColor('111')">On</button>
+  </div>
+  <div class="color-row">
+    <button type="button" name="gradient" class="rainbow" (click)="sendColorGradient('000')">RGB Cycle</button>
+  </div>
+  <!-- <app-color-palette [hue]="hue" (color)="color=$event"></app-color-palette>
+  <app-color-slider (color)="hue=$event" style="margin-left: 1rem;"></app-color-slider> -->
 </div>
-<div class="input-wrapper">
+<ng-template #noDevice class="no-device">
+  Waiting for device connection...
+</ng-template>
+<!-- <div class="input-wrapper">
   <span class="text">{{color}}</span>
   <div class="color-div" [ngStyle]="{'background-color': color || 'white'}"></div>
-</div>
+</div> -->
+<!-- <div class="bt_button">
+  <button type="button" name="bt_send_color" class="btn">Send to Device</button>
+</div> -->

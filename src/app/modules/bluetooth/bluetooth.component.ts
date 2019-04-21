@@ -5,21 +5,10 @@ import { BluetoothService } from '../../_services/bluetooth.service';
 
 import { Subscription } from 'rxjs';
 
-const PROVIDERS = [{
-  provide: BluetoothCore,
-  useFactory: (b, l) => new BluetoothCore(b, l),
-  deps: [BrowserWebBluetooth, ConsoleLoggerService]
-}, {
-  provide: BluetoothService,
-  useFactory: (b) => new BluetoothService(b),
-  deps: [BluetoothCore]
-}]
-
 @Component({
   selector: 'app-bluetooth',
   templateUrl: './bluetooth.component.html',
-  styleUrls: ['./bluetooth.component.scss'],
-  providers: PROVIDERS
+  styleUrls: ['./bluetooth.component.scss']
 })
 export class BluetoothComponent implements OnInit {
 
@@ -29,7 +18,7 @@ export class BluetoothComponent implements OnInit {
   deviceSubscription: Subscription;
 
   get device() {
-    return this.bt.getDevice();
+    return this.bt.device$;
   }
 
   constructor(private bt: BluetoothService) {
@@ -41,11 +30,18 @@ export class BluetoothComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getDeviceStatus();
-    this.streamSubscription = this.bt.stream()
-    .subscribe(this.updateValue.bind(this), this.hasError.bind(this))
+    // this.getDeviceStatus();
+    // this.streamSubscription = this.bt.stream()
+    // .subscribe(this.updateValue.bind(this), this.hasError.bind(this))
   }
 
+  connect() {
+    this.bt.connect();
+  }
+
+  sendValue(data) {
+    this.bt.send(data);
+  }
 
   getDeviceStatus() {
     this.bt.discover();
@@ -70,9 +66,9 @@ export class BluetoothComponent implements OnInit {
   }
 
   disconnect() {
-    this.bt.disconnectDevice();
-    this.deviceSubscription.unsubscribe();
-    this.valueSubscription.unsubscribe();
+    this.bt.disconnect();
+    // this.deviceSubscription.unsubscribe();
+    // this.valueSubscription.unsubscribe();
   }
 
   hasError(error: string) {

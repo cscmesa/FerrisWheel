@@ -1,32 +1,91 @@
+@import '../../../styles.scss';
+
 .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
   padding: 0 1rem;
+  height: 100%;
 }
 
 .title {
+  flex: none;
   text-align: center;
-  padding: 2rem;
-  margin: 0 0 1rem;
+  padding: 2rem 0 1rem;
 }
 
 .card-wrapper {
+  flex: 1;
   display: flex;
+  flex-wrap: wrap;
   align-items: flex-start;
   justify-content: center;
+  height: 100%;
+}
+
+.card-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+}
+
+.card-column > .card {
+  flex: 1 1 auto;
+}
+
+.card-column:nth-child(1) > .card {
+  flex: 0;
 }
 
 .card {
-  padding: 1rem;
   margin: 1rem;
   flex: 1;
+  flex-direction: column;
   box-shadow: 0px 2px 4px #CDCDCD;
-  min-height: 400px;
+  display: flex;
 }
 
 .card-title {
+  padding: 1rem;
+  background: $color2;
+  flex: none;
   margin-bottom: 0.5rem;
   font-weight: bolder;
 }
 
-.card-content {
+.card-title p {
+  color: $color1;
+}
 
+.card-title.connected {
+  background: green;
+}
+
+.card-title.connected p {
+  color: white !important;
+}
+
+.card-content {
+  padding: 1rem;
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.card-content.console {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.card-content > .log {
+  height: 100%;
+  overflow-y: scroll;
+  border: 1px solid black;
+  background: black;
+  padding: 1rem;
 }

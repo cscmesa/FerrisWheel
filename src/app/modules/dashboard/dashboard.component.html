@@ -3,20 +3,22 @@
     <h1>Ferris Wheel Application</h1>
   </div>
   <div class="card-wrapper">
-    <div class="card">
-      <div class="card-title">
-        <p>Bluetooth Manager</p>
+    <div class="card-column">
+      <div class="card">
+        <div class="card-title" [ngClass]="{'connected': device}">
+          <p>Bluetooth Manager</p>
+        </div>
+        <div class="card-content">
+          <app-bluetooth></app-bluetooth>
+        </div>
       </div>
-      <div class="card-content">
-        <app-bluetooth></app-bluetooth>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-title">
-        <p>Ferris Wheel Controls</p>
-      </div>
-      <div class="card-content">
-        <!-- <app-motor></app-motor> -->
+      <div class="card">
+        <div class="card-title">
+          <p>Ferris Wheel Controls</p>
+        </div>
+        <div class="card-content">
+          <!-- <app-motor></app-motor> -->
+        </div>
       </div>
     </div>
     <div class="card">
@@ -25,6 +27,18 @@
       </div>
       <div class="card-content">
         <app-color-picker></app-color-picker>
+      </div>
+    </div>
+    <div class="card-column">
+      <div class="card">
+        <div class="card-title">
+          <p>Console</p>
+        </div>
+        <div class="card-content console">
+          <div class="log">
+            <app-logger></app-logger>
+          </div>
+        </div>
       </div>
     </div>
   </div>

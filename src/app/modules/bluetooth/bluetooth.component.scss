@@ -1,0 +1,14 @@
+.bluetooth-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.bluetooth-buttons button {
+  flex: 1;
+}
+
+:host {
+  flex: 1;
+}

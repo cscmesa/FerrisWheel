@@ -8,7 +8,8 @@ import {
   OnChanges,
   ViewChild,
   EventEmitter,
-  HostListener } from '@angular/core';
+  HostListener,
+  Self } from '@angular/core';
 
 @Component({
   selector: 'app-color-palette',
@@ -30,7 +31,7 @@ export class ColorPaletteComponent implements AfterViewInit, OnChanges {
   private mousedown: boolean = false;
   public selectedPosition: {x: number, y: number};
 
-  constructor() { }
+  constructor(@Self() private el: ElementRef) { }
 
   ngAfterViewInit() {
     this.draw();
@@ -51,8 +52,16 @@ export class ColorPaletteComponent implements AfterViewInit, OnChanges {
       this.ctx = this.canvas.nativeElement.getContext('2d')
     }
 
-    const width = this.canvas.nativeElement.width
-    const height = this.canvas.nativeElement.height
+    const width = this.el.nativeElement.offsetWidth;
+    const height = this.el.nativeElement.offsetHeight;
+
+    // const width = this.canvas.nativeElement.width;
+    // const height = this.canvas.nativeElement.height;
+
+    this.canvas.nativeElement.width = width;
+    this.canvas.nativeElement.height = height;
+
+    this.ctx.clearRect(0, 0, width, height);
 
     this.ctx.fillStyle = this.hue || 'rgba(255,255,255,1)'
     this.ctx.fillRect(0, 0, width, height)
